@@ -2,7 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 
 interface Cart {
   name: string,
-  price: string,
+  price: number,
   id: string
 }
 
@@ -14,11 +14,14 @@ export class ShoppingListService {
   shoppingCart: Cart[] = [];
   cartChangedEvent: EventEmitter<Cart[]> = new EventEmitter<Cart[]>;
 
-  addToCart(name: string, price: string, id: string) {
+  addToCart(name: string, price: number, id: string) {
     this.shoppingCart.push({ name, price, id });
+    this.cartChangedEvent.emit(this.shoppingCart);
+    console.log(this.shoppingCart);
   }
 
-  removeFromCart(name: string, price: string, id: string) {
+  removeFromCart(name: string, price: number, id: string) {
     this.shoppingCart = this.shoppingCart.filter(cartItem => cartItem.id !== id);
+    this.cartChangedEvent.emit(this.shoppingCart);
   }
 }

@@ -6,7 +6,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product-list/product/product.component';
 import { AddProductComponent } from './product-list/add-product/add-product.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { CartItemComponent } from './cart-item/cart-item.component';
+import { CartItemComponent } from './shopping-list/cart-item/cart-item.component';
+import { ShoppingListService } from './services/shopping-list.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { CartItemComponent } from './cart-item/cart-item.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [ShoppingListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
