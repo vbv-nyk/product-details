@@ -16,4 +16,8 @@ export class ProductComponent {
   removeProduct() {
     this.productList.removeProduct(this.id)
   }
+
+  addToCart() {
+
+  }
 }

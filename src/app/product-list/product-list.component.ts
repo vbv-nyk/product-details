@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ProductListService } from '../services/product-list.service';
 
 interface Product {
@@ -13,7 +13,7 @@ interface Product {
   styleUrls: ['./product-list.component.css'],
   providers: [ProductListService]
 })
-export class ProductListComponent implements OnInit, OnChanges {
+export class ProductListComponent implements OnInit, OnDestroy {
   products = this.productList.products;
   constructor(private productList: ProductListService) { }
   ngOnInit(): void {
@@ -21,7 +21,7 @@ export class ProductListComponent implements OnInit, OnChanges {
     this.products = this.productList.products;
     this.productList.productListChange.subscribe((products) => this.products = products)
   }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log("Called");
+  ngOnDestroy(): void {
+    this.productList.productListChange.unsubscribe();
   }
 }
