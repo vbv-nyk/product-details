@@ -1,0 +1,5 @@
+<div>
+    <app-add-product></app-add-product>
+    <app-product *ngFor="let product of products" [name]="product.name" [price]="product.price" [id]="product.id">
+    </app-product>
+</div>
